@@ -1,7 +1,12 @@
 // Importación de dependencias
-import app from "./app";
+import app from "./app.js";
+
+// Creación de rutas
+app.get("/getAll", (req,res)=> {
+    res.json({message:"Hola la maquina de Emilio"})
+})
 
 // Ejecución del servidor
-app.listen(3000,  ()=> {
-    console.log("Server is running on port 3000");
+app.listen(app.get("port"), ()=> {
+    console.log("Server on port", app.get("port"));
 });
