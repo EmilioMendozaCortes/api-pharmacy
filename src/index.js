@@ -1,5 +1,6 @@
 // Importación de dependencias
 import app from "./app.js";
+import "./database.js"
 
 // Creación de rutas
 app.get("/getAll", (req,res)=> {
