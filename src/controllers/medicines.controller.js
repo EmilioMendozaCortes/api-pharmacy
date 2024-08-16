@@ -17,3 +17,39 @@ export const insertMedicine = async (req,res) => {
         res.json({message:err})
     });
 };
+export const getOne = async(req,  res)=> {
+    await medicineDAO.getOne(req.params.barcode)
+    .then((medicine) => {
+        if (medicine!= null) 
+            res.json(medicine)
+        else
+            res.json({medicine:"Medicine not found"});
+    })
+    .catch( err => {
+        res.json({message:err});
+    });
+}
+export const deleteOne = async(req, res)=> {
+    await medicineDAO.deleteOne(req.params.barcode)
+    .then((medicine) => {
+        if (medicine!= null) 
+            res.json(medicine)
+        else
+            res.json({medicine:"Medicine not found"});
+    })
+    .catch( err => {
+        res.json({message:err});
+    });
+}
+export const updateOne = async(req, res)=> {
+    await medicineDAO.updateOne(req.params.barcode, req.body)
+    .then((medicine) => {
+        if (medicine!= null) 
+            res.json({message:"Medicine updated"})
+        else
+            res.json({message:"Medicine not found"});
+    })
+    .catch( err => {
+        res.json({message:err});
+    });
+}
